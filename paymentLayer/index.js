@@ -18,12 +18,12 @@ function randomTx() {
 }
 const dummy = Kefir.fromPoll(10000, randomTx)
 
-
+log({bcoin})
 module.exports =
-    Promise.all([blockchaininfo, blockio, bcoin, dummy ])
+    Promise.all([bcoin, dummy ])
     // TODO: correctly continue if less than all promises error
     .then(allPayments => {
-        log("Initializing Payment Processing")
+        log("Initializing Payment Processing", allPayments)
         return Kefir
             .merge(allPayments)
             .filter(filterSeen)
