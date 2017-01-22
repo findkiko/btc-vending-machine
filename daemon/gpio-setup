@@ -1,0 +1,12 @@
+#!/bin/sh
+# Use gpio cli to export pins
+
+PIN=17
+
+if [ "$1" = "up" ]; then
+  /usr/bin/gpio export "$PIN" out
+elif [ "$1" = "down" ]; then
+  /usr/bin/gpio unexport "$PIN"
+else
+  >&2 echo "Error: Expected up/down argument"
+fi

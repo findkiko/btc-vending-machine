@@ -1,0 +1,15 @@
+[Unit]
+Description=Run btc-vending-machine node app from /var/lib/vending
+Requires=network.target
+After=network.target
+Requires=gpio-exporter.service
+After=gpio-exporter.service
+
+[Service]
+Type=simple
+User=vending
+Group=vending
+ExecStart=/usr/bin/node /var/lib/vending/btc-vending-machine/VendingMachine.js
+
+[Install]
+WantedBy=multi-user.target

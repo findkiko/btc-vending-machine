@@ -1,0 +1,13 @@
+[Unit]
+Description=Run gpio-setup script to export correct pins
+
+[Service]
+Type=simple
+RemainAfterExit=true
+User=vending
+Group=vending
+ExecStart=/usr/local/bin/gpio-setup up
+ExecStop=/usr/local/bin/gpio-setup down
+
+[Install]
+WantedBy=multi-user.target
